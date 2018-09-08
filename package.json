@@ -1,0 +1,51 @@
+{
+  "name": "cocktail",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.js",
+  "scripts": {
+    "dev": "tsoa routes && tsc-watch --onSuccess \"node dist/web-app/index.js\"",
+    "build": "tsoa routes && tsc",
+    "test": "jest",
+    "tdd": "jest --watchAll",
+    "lint": "tslint -p tsconfig.json",
+    "lint:fix": "tslint -p tsconfig.json --fix"
+  },
+  "author": "Delphin Aubin",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/express": "4.16.0",
+    "@types/jest": "^23.3.0",
+    "@types/node": "10.5.2",
+    "@types/reflect-metadata": "^0.1.0",
+    "jest": "^23.4.1",
+    "ts-jest": "^23.0.1",
+    "tsc-watch": "^1.0.26",
+    "tslint": "^5.11.0",
+    "tslint-config-airbnb": "^5.11.0",
+    "tsoa": "2.1.8",
+    "typescript": "2.9.2"
+  },
+  "dependencies": {
+    "express": "4.16.3",
+    "method-override": "3.0.0"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ],
+    "transform": {
+      "^.+\\.(ts|tsx)$": "ts-jest"
+    },
+    "globals": {
+      "ts-jest": {
+        "tsConfigFile": "tsconfig.json"
+      }
+    },
+    "testMatch": [
+      "**/*.spec.ts"
+    ]
+  }
+}
