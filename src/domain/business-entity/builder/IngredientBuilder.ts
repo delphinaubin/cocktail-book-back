@@ -2,6 +2,7 @@ import Color from '../../value-object/Color';
 import Name from '../../value-object/Name';
 import Unit from '../../value-object/Unit';
 import Ingredient from '../Ingredient';
+import Id from '../../value-object/Id';
 
 export default class IngredientBuilder {
 
@@ -11,6 +12,11 @@ export default class IngredientBuilder {
   private ingredient: Ingredient;
   private constructor() {
     this.ingredient = new Ingredient();
+  }
+
+  public withId(id: Id): this {
+    this.ingredient.id = id;
+    return this;
   }
 
   public withName(name: Name): this {

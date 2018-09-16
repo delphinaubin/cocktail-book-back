@@ -8,6 +8,7 @@ export const toCocktailDtoList = (cocktails: Cocktail[]): CocktailDto[] => {
 
 export const toCocktailDto = (cocktail: Cocktail): CocktailDto  => (
   {
+    id: cocktail.id.get(),
     name: cocktail.name.get(),
   }
 );
