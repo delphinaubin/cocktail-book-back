@@ -13,12 +13,12 @@ export const fromIngredientDto = (ingredientDto: IngredientDto): Ingredient => I
   .build();
 
 export const toIngredientDto = (ingredient: Ingredient): IngredientDto => (
-  {
-    id: ingredient.id.get(),
-    color: ingredient.color.get(),
-    name: ingredient.name.get(),
-    unit: ingredient.unit.get(),
-  }
+{
+  id: ingredient.id.get(),
+  color: ingredient.color.get(),
+  name: ingredient.name.get(),
+  unit: ingredient.unit.get(),
+}
 );
 
 export const toIngredientDtoList = (ingredients: Ingredient[]): IngredientDto[] => ingredients

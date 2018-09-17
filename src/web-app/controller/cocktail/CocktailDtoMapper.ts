@@ -7,10 +7,10 @@ export const toCocktailDtoList = (cocktails: Cocktail[]): CocktailDto[] => {
 };
 
 export const toCocktailDto = (cocktail: Cocktail): CocktailDto  => (
-  {
-    id: cocktail.id.get(),
-    name: cocktail.name.get(),
-  }
+{
+  id: cocktail.id.get(),
+  name: cocktail.name.get(),
+}
 );
 export const fromCocktailDto = (cocktail: CocktailDto) => CocktailBuilder
   .aCocktail()

@@ -1,7 +1,7 @@
 import Ingredient from '../domain/business-entity/Ingredient';
 import IngredientRepository from '../domain/repository/IngredientRepository';
 import Name from '../domain/value-object/Name';
-import * as uuid from 'uuid/v1'
+import * as uuid from 'uuid/v1';
 import Id from '../domain/value-object/Id';
 
 export default class InMemoryIngredientRepository implements IngredientRepository {
@@ -20,7 +20,7 @@ export default class InMemoryIngredientRepository implements IngredientRepositor
 
   public getByName(name: Name): Promise<Ingredient> {
     return Promise.resolve(
-        this.ingredients.find((i) => i.name.get() === name.get()),
+        this.ingredients.find(i => i.name.get() === name.get()),
     );
   }
 }
