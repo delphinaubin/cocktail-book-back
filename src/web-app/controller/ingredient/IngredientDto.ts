@@ -1,6 +1,6 @@
 
 export interface IngredientDto {
-  id: string;
+  id?: string;
   name: string;
   unit: string;
   color: string;
