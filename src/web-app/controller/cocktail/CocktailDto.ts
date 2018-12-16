@@ -1,4 +1,4 @@
 export interface CocktailDto {
-  id: string;
+  id?: string;
   name: string;
 }
