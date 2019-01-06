@@ -9,6 +9,14 @@ export default class InMemoryCocktailRepository implements CocktailRepository {
   public getAllCocktails(): Promise<Cocktail[]> {
     return Promise.resolve(this.cocktails);
   }
+
+  public getCocktailById(cocktailId: Id): Promise<Cocktail|null> {
+    return Promise.resolve(
+      this
+        .cocktails
+        .find(cocktail => cocktail.id.get() === cocktailId.get()) || null,
+    );
+  }
   public saveCocktail(cocktail: Cocktail): Promise<void> {
     cocktail.id = new Id(uuid());
     this.cocktails.push(cocktail);
