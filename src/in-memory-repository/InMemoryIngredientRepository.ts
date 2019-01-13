@@ -23,4 +23,10 @@ export default class InMemoryIngredientRepository implements IngredientRepositor
         this.ingredients.find(i => i.name.get() === name.get()),
     );
   }
+
+  public getById(ingredientId: Id): Promise<Ingredient> {
+    return Promise.resolve(
+      this.ingredients.find(i => i.id.get() === ingredientId.get()),
+    );
+  }
 }

@@ -27,6 +27,7 @@ export default class DependencyFactory {
   public static getCocktailPersistor(): CocktailPersistor {
     return new CocktailPersistor(
       DependencyFactory.getCocktailRepository(),
+      DependencyFactory.getIngredientRepository(),
     );
   }
   public static getIngredientPersistor(): IngredientPersistor {

@@ -1,12 +1,15 @@
 import { Body, Get, Post, Route, Query, Path } from 'tsoa';
 import DependencyFactory from '../../DependencyFactory';
 import { CocktailDto } from './CocktailDto';
-import { fromCocktailDto, toCocktailDtoList, toCocktailDto } from './CocktailDtoMapper';
+import { fromCocktailToCreateDto, toCocktailDtoList } from './CocktailDtoMapper';
 import Id from '../../../domain/value-object/Id';
 import CocktailNotFoundError from '../../../domain/error/CocktailNotFoundError';
 import CocktailNotFoundApiError from '../../error/CocktailNotFoundApiError';
 import CocktailDetailDto from './CocktailDetailDto';
 import { toCocktailDetailDto } from './CocktailDetailDtoMapper';
+import CocktailToCreateDto from './CocktailToCreateDto';
+import IngredientNotFoundError from '../../../domain/error/IngredientNotFoundError';
+import InvalidArgumentApiError from '../../error/InvalidArgumentApiError';
 
 @Route('cocktails')
 export class CocktailController {
@@ -38,9 +41,16 @@ export class CocktailController {
   }
 
   @Post()
-  public async addCocktail(@Body()cocktail: CocktailDto): Promise<void> {
-    await DependencyFactory
-      .getCocktailPersistor()
-      .saveCocktail(fromCocktailDto(cocktail));
+  public async addCocktail(@Body()cocktail: CocktailToCreateDto): Promise<void> {
+    try {
+      await DependencyFactory
+        .getCocktailPersistor()
+        .saveCocktail(fromCocktailToCreateDto(cocktail));
+    } catch (error) {
+      if (error instanceof IngredientNotFoundError) {
+        throw new InvalidArgumentApiError('One of given cocktail\'s ingredients doesn\'t exist');
+      }
+      console.log(error);
+    }
   }
 }
